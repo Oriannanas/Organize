@@ -1,0 +1,27 @@
+<VirtualHost *:80>
+    ServerAdmin webmaster@dummy-host2.example.com
+    DocumentRoot "/var/www/logboek/web/"
+    ServerName local.logboek.nl
+    ErrorLog  "/var/log/apache2/logboek-error_log"
+    CustomLog "/var/log/apache2/logboek-access_log" common
+</VirtualHost>
+
+<Directory "/var/www/logboek/web/">
+    AllowOverride All
+    Allow from all
+
+    RewriteEngine on
+    # if a directory or a file exists, use it directly
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # otherwise forward it to index.php
+    RewriteRule . index.php
+</Directory>
+
+
+
+<Files "settings.ini.php">
+    Allow from None
+    Order allow,deny
+</Files>

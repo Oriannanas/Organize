@@ -1,0 +1,37 @@
+<VirtualHost *:80>
+    ServerAdmin webmaster@dummy-host2.example.com
+    DocumentRoot "/home/marijn/Development/Customers/magento-local/web/"
+    ServerName magento-local.local.media-artists.nl
+    ErrorLog  "/var/log/apache2/magento-local-error_log"
+    CustomLog "/var/log/apache2/magento-local-access_log" common
+</VirtualHost>
+
+<Directory "/home/marijn/Development/Customers/magento-local/web/">
+    AllowOverride All
+    Allow from all
+
+    RewriteEngine on
+    # if a directory or a file exists, use it directly
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # otherwise forward it to index.php
+    RewriteRule . index.php
+</Directory>
+
+<Directory /home/marijn/Development/Customers/magento-local/*/protected/>
+    AllowOverride None
+    Allow from None
+    Order allow,deny
+</Directory>
+
+<Directory /home/marijn/Development/Customers/magento-local/*/libs/>
+    AllowOverride None
+    Allow from None
+    Order allow,deny
+</Directory>
+
+<Files "settings.ini.php">
+    Allow from None
+    Order allow,deny
+</Files>

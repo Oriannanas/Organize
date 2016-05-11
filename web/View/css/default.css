@@ -1,0 +1,25 @@
+label
+{
+    width: 100%;
+}
+input[type='text']
+{
+    width: 100%;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+.table {
+    display:table;
+}
+
+.table-cell {
+    display:table-cell;
+    padding-top: 1px;
+}
+
+.logboeken .table{
+    text-align: left;
+}

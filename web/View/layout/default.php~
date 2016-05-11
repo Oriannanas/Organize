@@ -1,0 +1,26 @@
+<?php
+<html>
+<head>
+<title>
+<?=$title?>
+</title>
+<?=$scripts?>
+<?=$css?>
+</head>
+<body>
+<header>
+<?=$header?>
+</header>
+<h1>test</h1>
+<div id="wrapper">
+<div id="container">
+<div id="content">
+<?=$content?>
+</div>
+</div>
+</div>
+<footer>
+<?=$footer?>
+</footer>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<?php
+namespace Controller;
+
+use Helper\Database;
+
+/**
+ * Created by PhpStorm.
+ * User: marijn
+ * Date: 13-2-16
+ * Time: 22:50
+ */
+class LogboekController extends BaseController
+{
+
+    public function actionIndex()
+    {
+        $this->render('logboek/base');
+    }
+
+    public function actionList()
+    {
+        $db = new Database();
+        $response = $db->read('logboek', isset($_POST['logId'])?$_POST['logId']: null);
+        $data = array(
+            'logbooks' => $response
+        );
+        echo json_encode($data);
+    }
+
+    public function actionNew()
+    {
+        $db = new Database();
+        $db->insert('logboek', $_POST['newLogData'])
+
+    }
+}
